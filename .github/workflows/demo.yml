@@ -10,3 +10,9 @@ jobs:
         run: | 
           node -v 
           nmp -v
+  run-normal-command:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: echo string
+        run: echo "hello world2"
+
