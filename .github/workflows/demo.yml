@@ -9,7 +9,7 @@ jobs:
       - name: multiline script
         run: | 
           node -v 
-          nmp -v
+          npm -v
   run-normal-command:
     runs-on: ubuntu-22.04
     steps:
