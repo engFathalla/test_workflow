@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: ls and pwd
         run: |
-          echo $name
+          echo ${{ secrets.name }}
       # - name: checkout
       #   id: checkout
       #   uses: actions/checkout@v1.0.0
