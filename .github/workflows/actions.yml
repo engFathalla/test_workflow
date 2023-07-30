@@ -1,11 +1,17 @@
 name: Action Workflow
-on: [push,workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: your name
+        required: true
 jobs:
   run-github-actions:
     runs-on: ubuntu-22.04
     steps:
       - name: ls and pwd
         run: |
+          echo $name
           node --version
       # - name: checkout
       #   id: checkout
