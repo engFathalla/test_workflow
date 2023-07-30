@@ -6,9 +6,7 @@ jobs:
     steps:
       - name: ls and pwd
         run: |
-          touch test
-          echo ${{ secrets.name }} > test
-          cat test
+          node --version
       # - name: checkout
       #   id: checkout
       #   uses: actions/checkout@v1.0.0
