@@ -2,7 +2,7 @@ name: Action Workflow
 on: [push]
 jobs:
   run-github-actions:
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     steps:
       - name: checkout
         id: checkout
