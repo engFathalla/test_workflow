@@ -4,7 +4,14 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-22.04
     steps:
-      - name: aws creds
+      - name: checkout
+        id: checkout
+        uses: actions/checkout@v1.0.0
+      - name: ls and pwd 
+        run: |
+          pwd
+          ls -a
+      - name: aws creds and npmrc
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
