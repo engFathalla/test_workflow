@@ -4,7 +4,7 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-22.04
     steps:
-      - name: aws s3
+      - name: aws creds
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
           secret-ids: |
@@ -13,6 +13,9 @@ jobs:
         # env:
         #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 ls
+      - name: aws s3
         run: |
           aws s3 ls
 
