@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: ls and pwd
         run: |
-          echo ${{ github.event.name }}
+          echo "${{ toJSON(github.event.inputs) }}"
           node --version
       # - name: checkout
       #   id: checkout
