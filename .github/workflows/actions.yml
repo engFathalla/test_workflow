@@ -4,6 +4,10 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-22.04
     steps:
+      - name: ls and pwd
+        run: |
+          ls 
+          pwd
       - name: simple JS action
         id: greet
         uses: actions/hello-world-javascript-action@v1.1
