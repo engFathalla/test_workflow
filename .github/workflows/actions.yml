@@ -6,8 +6,15 @@ jobs:
     steps:
       - name: ls and pwd
         run: |
-          ls 
           pwd
+          ls -a
+      - name: checkout
+        id: checkout
+        uses: actions/checkout@v3.5.3
+      - name: ls and pwd after
+        run: |
+          pwd
+          ls -a
       - name: simple JS action
         id: greet
         uses: actions/hello-world-javascript-action@v1.1
