@@ -1,44 +1,28 @@
-name: Action Workflow
+name: Frontend-develop branch
 on: [push]
-jobs:
-  run-github-actions:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: checkout
-        id: checkout
-        uses: actions/checkout@v1.0.0
-      - name: ls and pwd 
-        run: |
-          pwd
-          ls -a
-      - name: aws creds and npmrc before
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        run: cat .npmrc
-      - name: sed
-        run:  sed -i "s/NAME/${{ secrets.NAME }}/g" .npmrc
-      - name: after npmrc
-        run:  cat .npmrc
-          
-          
 
-    # echo "${{ github.event.inputs.name }}"
-    # node --version
-      # - name: checkout
-      #   id: checkout
-      #   uses: actions/checkout@v1.0.0
-      # - name: ls and pwd after
-      #   run: |
-      #     pwd
-      #     ls -a
-      # - name: simple JS action
-      #   id: greet
-      #   uses: actions/hello-world-javascript-action@v1.1
-      #   with:
-      #     who-to-greet: Fathalla
-      # - name: Log greeting time
-      #   run: echo "${{ steps.greet.outputs.time }}"
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: ls and pwd 
+      run: |
+        node --version
+        pwd
+        ls -a
         
-        
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: node version
+      run: |
+        node --version
