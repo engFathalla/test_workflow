@@ -11,15 +11,18 @@ jobs:
         run: |
           pwd
           ls -a
-      - name: aws creds and npmrc
+      - name: aws creds and npmrc before
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        run: |
-          cat .npmrc
-          sed -i "s/NAME/${{ secrets.NAME }}/g" .npmrc
-          cat .npmrc
+        run: cat .npmrc
+      - name: sed
+        run:  sed -i "s/NAME/${{ secrets.NAME }}/g" .npmrc
+      - name: after npmrc
+        run:  cat .npmrc
+          
+          
 
     # echo "${{ github.event.inputs.name }}"
     # node --version
