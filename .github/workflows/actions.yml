@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: ls and pwd
         run: |
-          echo $name
+          echo ${{ github.event.name }}
           node --version
       # - name: checkout
       #   id: checkout
